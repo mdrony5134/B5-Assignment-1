@@ -146,7 +146,7 @@ While both `type` and `interface` are powerful features in TypeScript, choosing 
 - Use `type` for unions, intersections, and complex type manipulations.
 
 
-# Intersection and Union Types in TypeScript: When and How to Use Them
+# 2. Intersection and Union Types in TypeScript: When and How to Use Them
 
 TypeScript provides powerful type system features that allow developers to create complex and flexible type definitions. Two of the most useful and versatile of these features are intersection types and union types. In this article, we’ll explore what these types are, when to use them, and how they can improve your TypeScript code.
 
