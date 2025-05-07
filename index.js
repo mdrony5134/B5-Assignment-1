@@ -60,5 +60,16 @@ function processValue(value) {
 }
 processValue("hello");
 processValue(10);
-console.log(processValue("hello"));
-console.log(processValue("20"));
+function getMostExpensiveProduct(products) {
+    if (products.length === 0) {
+        return null;
+    }
+    return products.reduce((maxProduct, currentProduct) => currentProduct.price > maxProduct.price ? currentProduct : maxProduct);
+}
+const products = [
+// { name: "Pen", price: 10 },
+// { name: "Notebook", price: 125 },
+// { name: "Bag", price: 50 },
+];
+console.log(getMostExpensiveProduct(products));
+// Output: { name: "Bag", price: 50 }

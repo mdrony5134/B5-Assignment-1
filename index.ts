@@ -73,34 +73,42 @@ myCar.getModel();
 
 // problem-5
 
-function processValue(value: string | number): number{
-    if(typeof value  === "string"){
-        return value.length;
-    }else{
-        return value*2
-    }
+function processValue(value: string | number): number {
+  if (typeof value === "string") {
+    return value.length;
+  } else {
+    return value * 2;
+  }
 }
 
-processValue("hello"); 
+processValue("hello");
 processValue(10);
 
 // problem - 6
 
 interface Product {
-    name: string;
-    price: number;
+  name: string;
+  price: number;
+}
+
+function getMostExpensiveProduct(products: Product[]): Product | null {
+  if (products.length === 0) {
+    return null;
   }
-  
-  function getMostExpensiveProduct(products: Product[]): Product | null{
 
-  }
+  return products.reduce((maxProduct, currentProduct) =>
+    currentProduct.price > maxProduct.price ? currentProduct : maxProduct
+  );
+}
+
+const products: Product[] = [
+  { name: "Pen", price: 10 },
+  { name: "Notebook", price: 125 },
+  { name: "Bag", price: 50 },
+];
+
+getMostExpensiveProduct(products)
 
 
-  const products = [
-    { name: "Pen", price: 10 },
-    { name: "Notebook", price: 25 },
-    { name: "Bag", price: 50 }
-  ];
-  
-  getMostExpensiveProduct(products);  
-  // Output: { name: "Bag", price: 50 }
+
+
