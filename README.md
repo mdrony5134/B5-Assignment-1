@@ -37,7 +37,6 @@ interface User {
 ### Using `type`:
 
 ```
-// Using type
 type User = {
  name: string;
  age: number;
