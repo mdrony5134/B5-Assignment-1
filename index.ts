@@ -107,8 +107,41 @@ const products: Product[] = [
   { name: "Bag", price: 50 },
 ];
 
-getMostExpensiveProduct(products)
+getMostExpensiveProduct(products);
 
+// problem - 7
 
+enum Day {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
 
+function getDayType(day: Day): string {
+  if (day === Day.Saturday || day === Day.Sunday) {
+    return "Weekend";
+  }
+  return "Weekday";
+}
 
+getDayType(Day.Monday);
+getDayType(Day.Sunday);
+
+// problem - 8
+
+async function squareAsync(n: number): Promise<number> {
+  if (n < 0) {
+    throw new Error("Negative number not allowed");
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  return n * n;
+}
+
+squareAsync(4).then(console.log);        
+squareAsync(-3).catch(console.error);
