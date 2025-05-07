@@ -33,10 +33,11 @@ interface User {
   name: string;
   age: number;
 }
+```
 
 ### Using `type`:
 
-```
+```ts
 type User = {
  name: string;
  age: number;
