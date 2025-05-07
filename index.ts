@@ -1,4 +1,3 @@
-// problem-1
 
 function formatString(input: string, toUpper?: boolean): string {
   if (toUpper === false) {
@@ -9,7 +8,7 @@ function formatString(input: string, toUpper?: boolean): string {
 
 formatString("Hello", false);
 
-// problem -2
+
 
 function filterByRating(
   items: { title: string; rating: number }[]
@@ -25,7 +24,7 @@ const books = [
 
 filterByRating(books);
 
-//   problem-3
+
 
 function concatenateArrays<T>(...arrays: T[][]): T[] {
   let result: T[] = [];
@@ -39,7 +38,7 @@ function concatenateArrays<T>(...arrays: T[][]): T[] {
 concatenateArrays(["a", "b"], ["c"]);
 concatenateArrays([1, 2], [3, 4], [5]);
 
-// problem-4
+
 class Vehicle {
   private make: string;
   private year: number;
@@ -71,7 +70,7 @@ const myCar = new Car("Toyota", 2020, "Corolla");
 myCar.getInfo();
 myCar.getModel();
 
-// problem-5
+
 
 function processValue(value: string | number): number {
   if (typeof value === "string") {
@@ -84,7 +83,7 @@ function processValue(value: string | number): number {
 processValue("hello");
 processValue(10);
 
-// problem - 6
+
 
 interface Product {
   name: string;
@@ -109,7 +108,7 @@ const products: Product[] = [
 
 getMostExpensiveProduct(products);
 
-// problem - 7
+
 
 enum Day {
   Monday,
@@ -131,7 +130,7 @@ function getDayType(day: Day): string {
 getDayType(Day.Monday);
 getDayType(Day.Sunday);
 
-// problem - 8
+
 
 async function squareAsync(n: number): Promise<number> {
   if (n < 0) {

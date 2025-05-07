@@ -17,9 +17,7 @@ Both are used to define custom data shapes, but they have different features tha
   - [1. Declaration Merging (Extensibility)](#1-declaration-merging-extensibility)
   - [2. Inheritance and Implementation](#2-inheritance-and-implementation)
   - [3. Use Cases Where `type` Excels](#3-use-cases-where-type-excels)
-- [🛠 Practical Example: Building a Custom Array Type](#-practical-example-building-a-custom-array-type)
 - [✅ Best Practices: When to Use Each](#-best-practices-when-to-use-each)
-- [⚙️ Performance Considerations](#️-performance-considerations)
 - [🧠 Conclusion](#-conclusion)
 
 ---
@@ -147,3 +145,92 @@ While both `type` and `interface` are powerful features in TypeScript, choosing 
 - Use `interface` for defining object shapes and class contracts, especially when you might need to extend them later.
 - Use `type` for unions, intersections, and complex type manipulations.
 
+
+# Intersection and Union Types in TypeScript: When and How to Use Them
+
+TypeScript provides powerful type system features that allow developers to create complex and flexible type definitions. Two of the most useful and versatile of these features are intersection types and union types. In this article, we’ll explore what these types are, when to use them, and how they can improve your TypeScript code.
+
+Union Types
+A Union type represents a value that can be one of several types. This is useful when a variable or function parameter can accept more than one type of value.
+
+The syntax for a union type is really simple:
+
+``` ts 
+type A = string | number;
+```
+In the example above, A can be either a string or a number.
+
+Union Types can be very useful in this circumstances
+
+- You want to create a type that represents a set of literal values
+- You need to handle different cases in a type-safe manner
+- When a value can be one of several types but not a combination.
+For instance, imagine a function that takes either a string or number and performs an operation based on the type:
+
+``` ts 
+function newValue(value: string | number): void {
+  if (typeof value === 'string') {
+    console.log(`String: ${value.toUpperCase()}`);
+  } else {
+    console.log(`Number: ${value.toFixed(2)}`);
+  }
+}
+
+newValue("hello");  // Output: String: HELLO
+newValue(42.3);     // Output: Number: 42.30
+```
+
+### Intersection Types
+An Intersection type allows you to combine multiple types into one. When you use Intersection types, the result is a type that includes all the properties of the intersected types. They are defined using the & operator.
+
+The syntax for intersection types look like this
+
+``` ts 
+type A = { name: string };
+type B = { age: number };
+type Person = A & B;
+```
+
+In this case, Person will have both name and age properties.
+
+Union Types can be very useful in this circumstances
+
+- When you need to combine multiple types into one type that has all the properties of both.
+- When modeling objects that require properties from multiple sources.
+- Combining interfaces or type aliases
+- Extending existing types with additional properties
+
+# Union Types vs. Intersection Types
+Understanding the difference between Union and Intersection types is key to using them effectively.
+
+Union types (A | B): A value can be of type A or type B but not both.
+Intersection types (A & B): A value must satisfy both types A and B.
+Example: Combining Union and Intersection Types
+You can combine Union and Intersection types for more complex scenarios.
+
+``` ts 
+type Admin = { role: "admin"; accessLevel: number };
+type User = { username: string; password: string };
+
+type AdminOrUser = Admin | User;
+type AdminAndUser = Admin & User;
+
+function handleUser(user: AdminOrUser) {
+  if ("accessLevel" in user) {
+    console.log(`Admin with access level: ${user.accessLevel}`);
+  } else {
+    console.log(`User with username: ${user.username}`);
+  }
+}
+
+const admin: AdminAndUser = {
+  role: "admin",
+  accessLevel: 5,
+  username: "adminUser",
+  password: "securePassword"
+};
+
+handleUser(admin); // Output: Admin with access level: 5
+```
+
+Union and Intersection types are fundamental concepts in TypeScript that enhance type safety and flexibility. Union types allow variables to be one of several types, while Intersection types combine multiple types into one. By leveraging these features, you can write more maintainable, expressive, and safer code.
